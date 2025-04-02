@@ -56,7 +56,13 @@ ylabel('Current (A)')
 title('I-V Characteristic for IN4148 Diode, with data points highlighted')
 grid on
 
-figure
-plot(V, I_data, 'rx')
+figure;
+plot(V, I_data, 'rx', 'DisplayName', 'Curve Fitted Data', 'MarkerSize', 8, 'LineWidth', 1.5); 
 hold on;
-plot(V_data, I_data, 'b-')
+plot(V_data, I_data, 'b-', 'DisplayName', 'Experimental Data', 'LineWidth', 1.5); 
+grid on;
+xlabel('Voltage (V)');
+ylabel('Current (A)');
+title('I-V Characteristic for IN4148 Diode');
+legend('Location', 'northwest');
+hold off;
