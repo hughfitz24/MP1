@@ -1,7 +1,7 @@
-%% NewtonRaphson.m
+%% GaussianElimination.m
 % M-file creating the function that implements 
 % Gaussian Elimination for the solution of systems of equations.
-% Written by Hugh Fitzpatrick, S.N. 22341351 for the completion of MS1. 
+% Written by Hugh Fitzpatrick, S.N. 22341351 for the completion of MP1. 
 
 function x = GaussianElimination(A, b)
 
@@ -18,7 +18,7 @@ function x = GaussianElimination(A, b)
  
     for m = 1:n-1 % Loop processes each column in the matrix
         % Index of current row
-        row_index = [m:n]; % Considers rows from m to n 
+        row_index = m:n; % Considers rows from m to n 
         % Yc contains max values, Ir contains indices of the values 
         [Yc, Ir] = max(abs(A1(row_index, row_index)));
         [~, Ic1] = max(Yc);
@@ -34,12 +34,12 @@ function x = GaussianElimination(A, b)
  
         %% Swap matrix so pivot point is primary element
         % Swap mth row with row containing the pivot 
-        p = [1:n];
+        p = 1:n;
         p(m) = m-1+row_num;
         p(m-1+row_num) = m;
  
         % Swap mth col with col containing the pivot
-        q = [1:n];
+        q = 1:n;
         q(m) = m-1+col_num;
         q(m-1+col_num) = m;
  
