@@ -12,6 +12,7 @@ function [x, iterations] = NewtonRaphson(f, J, x0, tol, maxIter)
     %   x0      - Initial guess
     %   tol     - Tolerance (1e-9)
     %   maxIter - Maximum iterations (20)
+    %   solType - Type of solution method to use (1 for Gaussian elimination, 2 for Gauss-Seidel)
     % Outputs:
     %   x       - Solution vector
 
@@ -37,13 +38,18 @@ function [x, iterations] = NewtonRaphson(f, J, x0, tol, maxIter)
         % Evaluate function and Jacobian
         F = f(x);
         Jacobian = J(x);
-
-        % Solve Jacobian * delta_x = -F using Gaussian elimination, as
-        % detailed in Equation 7.
+        % Solve Jacobian * delta_x = -F using Gaussian elimination
         deltaX = GaussianElimination(Jacobian, -F);
 
         % Update solution
         x = x + deltaX;
+        % Display current iteration, function value, and deltaX
+        fprintf('Iteration %d:\n', iter);
+        disp('Value:');
+        disp(x);
+        disp('Delta X:');
+        disp(deltaX);
+        fprintf('Cond(J) = %.2e\n', cond(J(x)));
 
         %% Check for convergence
         % Check if deltaX is less than the tolerance 
@@ -57,4 +63,5 @@ function [x, iterations] = NewtonRaphson(f, J, x0, tol, maxIter)
     % If algorithm did not successfully converge, display error msg
     error('Newton-Raphson did not converge after %d iterations.', maxIter);
 end
+
 
