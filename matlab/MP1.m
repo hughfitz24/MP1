@@ -49,7 +49,6 @@ fprintf("R = %.5f\n", R_gauss)
 fprintf("MSE = %.10f\n", MSE_gauss)
 
 % Solve with Gauss Seidel
-disp(A)
 x_GS = GaussSeidel(A, b, 1e-9, 1000, [0; 0]);
 n_GS = x_GS(1);
 R_GS = x_GS(2);
@@ -318,7 +317,7 @@ output_power = (x_ac_voltage.^2) / 25;  % in Watts
 
 % Plotting the Output Voltage
 figure;
-subplot(3,1,1);
+subplot(2,1,1);
 hold on;
 plot(t, x_ac_voltage);
 plot(t, input);
@@ -327,7 +326,7 @@ ylabel('Output Voltage (V)');
 title('Output Voltage vs. Time');
 
 % Plotting the Output Power and input power vs time
-subplot(3,1,2);
+subplot(2,1,2);
 plot(t, output_power);
 xlabel('Time (s)');
 ylabel('Output Power (W)');

@@ -40,16 +40,7 @@ function [x, iterations] = GaussSeidel(A, b, tolerance, maxIterations, x0)
     % Precompute D inverse
 
     D_inv = diag(1 ./ diag(D));
-
-    % % Display D_inv, L and U for debugging
-    % disp('D_inv matrix:')
-    % disp(D_inv)
-    % disp('L matrix:')
-    % disp(L)
-    % disp('U matrix:')
-    % disp(U)
-
-
+    
     % Start iterations
 
     for k = 1:maxIterations
